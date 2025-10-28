@@ -1,0 +1,73 @@
+{% extends 'admin/layout.twig' %}
+
+{% block content %}
+<div class="card p-4">
+    <h2 class="h4 mb-4">Yeni Sipariş Oluştur</h2>
+    <div class="mb-3">
+        <input type="search" class="form-control" placeholder="Servis ara..." id="serviceSearch">
+    </div>
+    <div class="row g-3" id="serviceList">
+        {% for service in services %}
+            <div class="col-md-4 service-card" data-name="{{ service.name|lower }}">
+                <div class="card p-3 h-100">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <i class="bi {{ service.icon }} fs-2" style="color: {{ service.color }}"></i>
+                            <h5 class="mt-2">{{ service.name }}</h5>
+                        </div>
+                        <button class="btn btn-sm btn-outline-warning"><i class="bi bi-star"></i></button>
+                    </div>
+                    <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#orderModal" data-service="{{ service.name }}">Sipariş Ver</button>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="modal fade" id="orderModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Servis Seçimi</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">Ülke</label>
+                        <select class="form-select">
+                            <option>Türkiye</option>
+                            <option>Amerika</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Operatör</label>
+                        <select class="form-select">
+                            <option>Turkcell</option>
+                            <option>Vodafone</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Kupon</label>
+                        <input type="text" class="form-control" placeholder="Kupon kodu">
+                    </div>
+                </form>
+                <div class="alert alert-info">Ücret anlık tedarikçiden alınacaktır.</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">İptal</button>
+                <button type="button" class="btn btn-primary">Ödemeyi Tamamla</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+const searchInput = document.getElementById('serviceSearch');
+const cards = document.querySelectorAll('.service-card');
+searchInput?.addEventListener('input', () => {
+  const value = searchInput.value.toLowerCase();
+  cards.forEach(card => {
+    card.classList.toggle('d-none', !card.dataset.name.includes(value));
+  });
+});
+</script>
+{% endblock %}

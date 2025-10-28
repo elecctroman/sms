@@ -1,0 +1,44 @@
+{
+    "name": "acme/sms-verification-platform",
+    "description": "Modular MVC SMS verification platform with admin panel and landing page.",
+    "type": "project",
+    "require": {
+        "php": "^8.1",
+        "ext-json": "*",
+        "ext-pdo": "*",
+        "ext-intl": "*",
+        "ext-curl": "*",
+        "ext-zip": "*",
+        "symfony/dotenv": "^6.0",
+        "monolog/monolog": "^3.0",
+        "twig/twig": "^3.0",
+        "nikic/fast-route": "^1.3",
+        "symfony/http-foundation": "^6.0",
+        "symfony/http-client": "^6.0",
+        "symfony/translation": "^6.0",
+        "vlucas/phpdotenv": "^5.5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0",
+        "phpstan/phpstan": "^1.10",
+        "friendsofphp/php-cs-fixer": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "@php vendor/bin/phpstan analyse"
+        ],
+        "tests": "@php vendor/bin/phpunit"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
