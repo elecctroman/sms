@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><?= $view->escape($title ?? 'SMS Verify Platform'); ?></title>
+    <meta name="description" content="Global SMS onay scripti">
+    <meta name="keywords" content="sms onay, otp, sanal numara">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/assets/app.css">
+</head>
+<body class="bg-light">
+<header class="py-4">
+    <div class="container d-flex justify-content-between align-items-center">
+        <a href="/" class="fw-bold fs-4 text-primary">SMS Verify</a>
+        <nav class="d-flex gap-3">
+            <a href="/faq" class="text-decoration-none text-dark">SSS</a>
+            <a href="/blog" class="text-decoration-none text-dark">Blog</a>
+            <a href="/announcements" class="text-decoration-none text-dark">Duyurular</a>
+        </nav>
+        <div class="d-flex gap-2">
+            <a href="/login" class="btn btn-outline-primary"><?= $view->escape($view->translate('login')); ?></a>
+            <a href="/register" class="btn btn-primary"><?= $view->escape($view->translate('register')); ?></a>
+        </div>
+    </div>
+</header>
+<main>
+    <?= $content ?? '' ?>
+</main>
+<footer class="py-5 bg-dark text-white mt-5">
+    <div class="container d-flex justify-content-between">
+        <p class="mb-0">&copy; <?= date('Y'); ?> SMS Verify Platform</p>
+        <div class="d-flex gap-3">
+            <a href="/sitemap.xml" class="text-white">Sitemap</a>
+            <a href="/robots.txt" class="text-white">Robots</a>
+        </div>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/app.js"></script>
+</body>
+</html>

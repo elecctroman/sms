@@ -1,0 +1,60 @@
+@use "sass:map";
+
+$primary: #4f46e5;
+$secondary: #0ea5e9;
+$dark: #0f172a;
+$light: #f8fafc;
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: $light;
+  color: $dark;
+}
+
+.theme-toggle {
+  cursor: pointer;
+}
+
+.hero {
+  background: linear-gradient(120deg, rgba($primary, 0.92), rgba($secondary, 0.85));
+  color: #fff;
+  padding: 120px 0;
+}
+
+.card {
+  border: none;
+  border-radius: 1rem;
+  box-shadow: 0 20px 40px rgba(79, 70, 229, 0.1);
+}
+
+.table {
+  background-color: #fff;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.badge-status {
+  &.pending { background-color: #f59e0b; }
+  &.active { background-color: #10b981; }
+  &.completed { background-color: #2563eb; }
+  &.cancelled { background-color: #ef4444; }
+  &.failed { background-color: #b91c1c; }
+  &.expired { background-color: #6b7280; }
+}
+
+.admin-sidebar {
+  background-color: $dark;
+  color: #fff;
+  min-height: 100vh;
+}
+
+.admin-sidebar a {
+  color: #cbd5f5;
+  text-decoration: none;
+}
+
+.admin-sidebar a.active {
+  color: #fff;
+  font-weight: 600;
+}
+

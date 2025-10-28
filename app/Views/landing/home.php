@@ -1,0 +1,116 @@
+<?php
+$title = 'Anında SMS Onayı';
+ob_start();
+?>
+<section class="hero text-center" data-aos="fade-up">
+    <div class="container">
+        <h1 class="display-4 fw-bold"><?= $view->escape($hero['title'] ?? ''); ?></h1>
+        <p class="lead"><?= $view->escape($hero['subtitle'] ?? ''); ?></p>
+        <div class="mt-4 d-flex justify-content-center gap-3">
+            <a href="/register" class="btn btn-lg btn-light text-primary">Hemen Başla</a>
+            <a href="#features" class="btn btn-lg btn-outline-light">Detayları Keşfet</a>
+        </div>
+    </div>
+</section>
+<section id="features" class="py-5">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-4" data-aos="zoom-in">
+                <div class="card p-4 h-100">
+                    <i class="bi bi-speedometer fs-2 text-primary"></i>
+                    <h3 class="mt-3">Şimşek Hızında</h3>
+                    <p>Anlık tedarikçiler ile saniyeler içinde doğrulama kodunu yakalayın.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+                <div class="card p-4 h-100">
+                    <i class="bi bi-shield-lock fs-2 text-primary"></i>
+                    <h3 class="mt-3">Kurumsal Güvenlik</h3>
+                    <p>HSTS, CSRF ve 2FA ile güvenli bir yönetim deneyimi sunar.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+                <div class="card p-4 h-100">
+                    <i class="bi bi-translate fs-2 text-primary"></i>
+                    <h3 class="mt-3">Çok Dilli</h3>
+                    <p>TR ve EN dilleri hazır; yeni diller eklemek için esnek yapı.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-5 bg-white">
+    <div class="container text-center">
+        <div class="row g-3">
+            <div class="col-md-3">
+                <h2 class="fw-bold">250K+</h2>
+                <p>Başarılı SMS</p>
+            </div>
+            <div class="col-md-3">
+                <h2 class="fw-bold">120+</h2>
+                <p>Desteklenen Servis</p>
+            </div>
+            <div class="col-md-3">
+                <h2 class="fw-bold">60</h2>
+                <p>Ülke</p>
+            </div>
+            <div class="col-md-3">
+                <h2 class="fw-bold">99.9%</h2>
+                <p>SLA</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-5" id="faq">
+    <div class="container">
+        <h2 class="text-center mb-4">Sıkça Sorulan Sorular</h2>
+        <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">Nasıl kayıt olurum?</button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">Hızlıca kayıt formunu doldurun ve e-posta doğrulaması yapın.</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">Ödemeler nasıl çalışır?</button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">Cüzdanınıza bakiye yükleyerek siparişlerinizi anında verin.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-4">Müşteri Yorumları</h2>
+        <div class="row g-4">
+            <?php foreach ($testimonials ?? [] as $testimonial): ?>
+                <?php
+                $name = (string) ($testimonial['name'] ?? '');
+                $initial = function_exists('mb_substr') ? mb_substr($name, 0, 1) : substr($name, 0, 1);
+                ?>
+                <div class="col-md-6" data-aos="fade-up">
+                    <div class="card p-4 h-100 shadow-sm">
+                        <p class="mb-3">“<?= $view->escape($testimonial['message'] ?? ''); ?>”</p>
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="avatar bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width:48px;height:48px;">
+                                <?= $view->escape($initial ?: ''); ?>
+                            </div>
+                            <div>
+                                <h5 class="mb-0"><?= $view->escape($name); ?></h5>
+                                <small class="text-muted"><?= $view->escape($testimonial['role'] ?? ''); ?></small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+<?php
+$content = ob_get_clean();
+include __DIR__ . '/layout.php';
