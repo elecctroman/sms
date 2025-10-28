@@ -1,0 +1,50 @@
+{% extends 'admin/layout.twig' %}
+
+{% block content %}
+<div class="row g-4">
+    <div class="col-md-4">
+        <div class="card p-4">
+            <h5>Bakiye</h5>
+            <p class="display-6 text-primary">₺{{ stats.balance }}</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card p-4">
+            <h5>Harcanan</h5>
+            <p class="display-6 text-danger">₺{{ stats.spent }}</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card p-4">
+            <h5>Sipariş</h5>
+            <p class="display-6 text-success">{{ stats.orders }}</p>
+        </div>
+    </div>
+</div>
+<section class="mt-5">
+    <h2 class="h4 mb-3">Hızlı Bağlantılar</h2>
+    <div class="d-flex gap-3 flex-wrap">
+        <a href="/add-funds" class="btn btn-outline-primary">Bakiye Ekle</a>
+        <a href="/support" class="btn btn-outline-primary">Destek</a>
+        <a href="/orders" class="btn btn-outline-primary">Siparişlerim</a>
+        <a href="/faq" class="btn btn-outline-primary">SSS</a>
+    </div>
+</section>
+<section class="mt-5">
+    <h2 class="h4 mb-3">Favori Servisler</h2>
+    <div class="row g-3">
+        {% for service in favoriteServices %}
+            <div class="col-md-3">
+                <div class="card p-3 text-center" style="border-top:4px solid {{ service.color }};">
+                    <i class="bi {{ service.icon }} fs-1" style="color: {{ service.color }}"></i>
+                    <h5 class="mt-2">{{ service.name }}</h5>
+                </div>
+            </div>
+        {% else %}
+            <div class="col-12">
+                <div class="alert alert-light text-center">Henüz favori servis yok.</div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'admin/layout.twig' %}
+
+{% block content %}
+<div class="card p-4">
+    <h2 class="h4 mb-4">Bakiye Ekle</h2>
+    <div class="row g-4">
+        {% for method in methods %}
+            <div class="col-md-4">
+                <div class="card p-3 h-100">
+                    <h3 class="h5">{{ method.name }}</h3>
+                    <p>Komisyon: %{{ (method.fee * 100)|number_format(1) }}</p>
+                    <p>Minimum: ₺{{ method.min }}</p>
+                    <button class="btn btn-primary">Devam Et</button>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

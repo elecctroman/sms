@@ -1,0 +1,28 @@
+{% extends 'landing/layout.twig' %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container" style="max-width:540px;">
+        <h1 class="mb-4">Kayıt Ol</h1>
+        <form method="post" action="/register">
+            <div class="mb-3">
+                <label class="form-label">Ad Soyad</label>
+                <input type="text" name="name" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">E-posta</label>
+                <input type="email" name="email" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Şifre</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="gdpr" required>
+                <label class="form-check-label" for="gdpr">KVKK ve Çerez politikasını kabul ediyorum.</label>
+            </div>
+            <button class="btn btn-primary w-100">Kayıt Ol</button>
+        </form>
+    </div>
+</section>
+{% endblock %}
